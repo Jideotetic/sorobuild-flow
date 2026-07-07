@@ -1,0 +1,39 @@
+{
+  "name": "sorobuild-flow-full",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "sorobuild-flow": "./bin/sorobuild-flow-generate.mjs"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n API,WEB -c blue,green \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:web": "vite --host 0.0.0.0 --port 5173",
+    "dev:api": "node --watch ./server/server.mjs",
+    "api": "node ./server/server.mjs",
+    "web": "vite --host 0.0.0.0 --port 5173",
+    "build:web": "vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 4173",
+    "generate": "node ./bin/sorobuild-flow-generate.mjs"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1080.0",
+    "@stellar/stellar-sdk": "^13.1.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "adm-zip": "^0.5.18",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.2",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^4.22.2",
+    "iconsax-react": "^0.0.8",
+    "mongoose": "^9.7.4",
+    "multer": "^1.4.5-lts.1",
+    "postcss": "^8.4.49",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.18.1",
+    "tailwindcss": "^3.4.17",
+    "vite": "^5.4.11"
+  }
+}
