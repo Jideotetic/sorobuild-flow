@@ -44,7 +44,7 @@ const upload = multer({
   limits: { fileSize: MAX_UPLOAD_MB * 1024 * 1024 },
 });
 
-app.use(cors());
+app.use(cors("https://flow.soro.build/",));
 app.use(express.json({ limit: "20mb" }));
 
 await connectMongo();
