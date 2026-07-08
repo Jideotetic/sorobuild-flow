@@ -45,21 +45,21 @@ WantedBy=multi-user.target
 EOF
 
 echo "🔄 Reloading systemd configurations..."
-systemctl daemon-reload
-systemctl enable ${SERVICE_NAME}.service
+sudo systemctl daemon-reload
+sudo systemctl enable ${SERVICE_NAME}.service
 echo "✅ Systemd service '${SERVICE_NAME}' is registered and enabled to start on boot."
 
 # --- START & CLEANUP ---
 read -p "🚀 Do you want to build and start the app on port 4307 now? (y/n): " choice
 if [[ "$choice" =~ ^[Yy]$ ]]; then
   echo "⏳ Building Docker image and booting containers (this might take a minute)..."
-  systemctl start ${SERVICE_NAME}.service
+  sudo systemctl start ${SERVICE_NAME}.service
   
   echo "🧼 Cleaning up dangling, leftover build images..."
-  docker image prune -f
+  sudo docker image prune -f
   
   echo "🎉 Success! App status:"
-  systemctl status ${SERVICE_NAME}.service --no-pager -l
+  sudo systemctl status ${SERVICE_NAME}.service --no-pager -l
 else
   echo "ℹ️ Setup finished. Start later using: sudo systemctl start ${SERVICE_NAME}"
 fi
