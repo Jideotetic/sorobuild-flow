@@ -2,7 +2,7 @@
 
 # --- CONFIGURATION ---
 SERVICE_NAME="sorobuild-flow-api"
-APP_DIR="/home/tinkerpal/sorobuild-flow-api"
+APP_DIR="/home/tinkerpal/sorobuild-flow"
 DOCKER_COMPOSE_BIN="/usr/bin/docker compose"
 SERVICE_FILE="/etc/systemd/system/${SERVICE_NAME}.service"
 
