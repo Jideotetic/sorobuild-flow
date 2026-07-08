@@ -1,0 +1,8 @@
+node_modules
+frontend/node_modules
+.storage
+data
+.git
+.env
+dist
+frontend/dist
