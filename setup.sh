@@ -13,10 +13,10 @@ if [ ! -d "$APP_DIR" ]; then
 fi
 
 # Ensure script is run with root privileges to write to /etc/systemd
-if [ "$EUID" -ne 0 ]; then
-  echo "❌ Error: Please run this script with sudo: sudo ./vps-setup.sh"
-  exit 1
-fi
+# if [ "$EUID" -ne 0 ]; then
+#   echo "❌ Error: Please run this script with sudo: sudo ./vps-setup.sh"
+#   exit 1
+# fi
 
 echo "🔄 Navigating to project directory..."
 cd "$APP_DIR" || exit 1
