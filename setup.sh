@@ -18,8 +18,8 @@ fi
 #   exit 1
 # fi
 
-echo "🔄 Navigating to project directory..."
-cd "$APP_DIR" || exit 1
+# echo "🔄 Navigating to project directory..."
+# cd "$APP_DIR" || exit 1
 
 # Optional: Uncomment if your VPS uses Git deployment workflow
 # echo "📥 Pulling latest code updates..."
