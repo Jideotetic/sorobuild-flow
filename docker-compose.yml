@@ -1,0 +1,11 @@
+services:
+  sorobuild-flow:
+    build: .
+    container_name: sorobuild-flow
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "4307:4307"
+    volumes:
+      - ./data/workflows:/app/.storage/workflows
