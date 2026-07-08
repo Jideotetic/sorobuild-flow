@@ -1,0 +1,996 @@
+{
+  "workflowId": "wf_1783484256154_a4b7ed5e",
+  "ownerId": "sorobuild_flow_browser_9c3b1a12-fefa-433a-80a0-70f503414963",
+  "name": "socketfi_identity_registry.optimized",
+  "mode": "wasm",
+  "network": "testnet",
+  "source": "alice",
+  "status": "generated",
+  "createdAt": "2026-07-08T04:17:36.158Z",
+  "updatedAt": "2026-07-08T04:17:36.360Z",
+  "lastOpenedAt": "2026-07-08T04:18:58.077Z",
+  "lastDownloadedAt": null,
+  "inputFile": "socketfi_identity_registry.optimized.wasm",
+  "storage": {
+    "provider": "local",
+    "path": "/app/.storage/workflows/owners/sorobuild_flow_browser_9c3b1a12-fefa-433a-80a0-70f503414963/workflows/wf_1783484256154_a4b7ed5e"
+  },
+  "stdout": "\n=======================================\nOptimizing socketfi_identity_registry.optimized.wasm\n=======================================\nReading: /app/.storage/workflows/owners/sorobuild_flow_browser_9c3b1a12-fefa-433a-80a0-70f503414963/workflows/wf_1783484256154_a4b7ed5e/input/socketfi_identity_registry.optimized.wasm (20770 bytes)\nOptimized: /app/.storage/workflows/owners/sorobuild_flow_browser_9c3b1a12-fefa-433a-80a0-70f503414963/workflows/wf_1783484256154_a4b7ed5e/input/socketfi_identity_registry.optimized.optimized.wasm (20773 bytes)\n===== STELLAR INSPECT OUTPUT START =====\nEnv Meta: AAAAAAAAABkAAAAA\n • Protocol Version: 25\n\nContract Meta:\n • rsver: 1.91.0\n • rssdkver: 25.3.1#e50d95af029c83196dd122f0154bac3f1302394b\n\nContract Spec:\n • Union: DataKey\n     Cases:\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(Validators),\n            },\n        )\n      • TupleV0(\n            ScSpecUdtUnionCaseTupleV0 {\n                doc: StringM(),\n                name: StringM(RegistryManager),\n                type_: VecM(\n                    [\n                        Address,\n                    ],\n                ),\n            },\n        )\n      • TupleV0(\n            ScSpecUdtUnionCaseTupleV0 {\n                doc: StringM(),\n                name: StringM(HasMap),\n                type_: VecM(\n                    [\n                        Bytes,\n                    ],\n                ),\n            },\n        )\n\n • Function: add_voter\n     Docs: Add governance voter.\\n\\nNotes:\\n- Admin only.\n     Inputs: VecM(\n         [\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(voter),\n                 type_: Address,\n             },\n         ],\n     )\n     Output: VecM(\n         [\n             Result(\n                 ScSpecTypeResult {\n                     ok_type: Void,\n                     error_type: Udt(\n                         ScSpecTypeUdt {\n                             name: StringM(UpgradeError),\n                         },\n                     ),\n                 },\n             ),\n         ],\n     )\n\n • Function: cast_vote\n     Docs: Cast vote on active proposal.\\n\\nNotes:\\n- Voter must authorize.\\n- Records approval for supplied hash.\n     Inputs: VecM(\n         [\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(voter),\n                 type_: Address,\n             },\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(wasm_hash),\n                 type_: BytesN(\n                     ScSpecTypeBytesN {\n                         n: 32,\n                     },\n                 ),\n             },\n         ],\n     )\n     Output: VecM(\n         [\n             Result(\n                 ScSpecTypeResult {\n                     ok_type: Void,\n                     error_type: Udt(\n                         ScSpecTypeUdt {\n                             name: StringM(UpgradeError),\n                         },\n                     ),\n                 },\n             ),\n         ],\n     )\n\n • Function: set_admin\n     Docs: Update admin.\\n\\nNotes:\\n- Admin only.\\n- Changes control over privileged registry actions.\n     Inputs: VecM(\n         [\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(new_admin),\n                 type_: Address,\n             },\n         ],\n     )\n     Output: VecM(\n         [],\n     )\n\n • Function: add_manager\n     Docs: Add registry manager.\\n\\nAuthorization:\\n- Admin only.\\n\\nSecurity model:\\n- Registry managers are recovery operators.\\n- They may unlink stale or compromised identity bindings.\\n- They cannot create, overwrite, or rebind identity mappings.\n     Inputs: VecM(\n         [\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(manager),\n                 type_: Address,\n             },\n         ],\n     )\n     Output: VecM(\n         [\n             Result(\n                 ScSpecTypeResult {\n                     ok_type: Void,\n                     error_type: Udt(\n                         ScSpecTypeUdt {\n                             name: StringM(RegistryError),\n                         },\n                     ),\n                 },\n             ),\n         ],\n     )\n\n • Function: remove_voter\n     Docs: Remove governance voter.\\n\\nNotes:\\n- Admin only.\n     Inputs: VecM(\n         [\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(voter),\n                 type_: Address,\n             },\n         ],\n     )\n     Output: VecM(\n         [\n             Result(\n                 ScSpecTypeResult {\n                     ok_type: Void,\n                     error_type: Udt(\n                         ScSpecTypeUdt {\n                             name: StringM(UpgradeError),\n                         },\n                     ),\n                 },\n             ),\n         ],\n     )\n\n • Function: __constructor\n     Docs: Initialize registry.\\n\\nNotes:\\n- Sets initial admin.\\n- Intended to run once.\n     Inputs: VecM(\n         [\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(admin),\n                 type_: Address,\n             },\n         ],\n     )\n     Output: VecM(\n         [\n             Result(\n                 ScSpecTypeResult {\n                     ok_type: Void,\n                     error_type: Udt(\n                         ScSpecTypeUdt {\n                             name: StringM(UpgradeError),\n                         },\n                     ),\n                 },\n             ),\n         ],\n     )\n\n • Function: add_validator\n     Docs: Add validator.\\n\\nNotes:\\n- Admin only.\\n- Expands trusted signer set.\n     Inputs: VecM(\n         [\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(validator),\n                 type_: BytesN(\n                     ScSpecTypeBytesN {\n                         n: 32,\n                     },\n                 ),\n             },\n         ],\n     )\n     Output: VecM(\n         [],\n     )\n\n • Function: apply_upgrade\n     Docs: Execute approved upgrade.\\n\\nNotes:\\n- Admin only.\\n- Applies current passed proposal.\n     Inputs: VecM(\n         [],\n     )\n     Output: VecM(\n         [\n             Result(\n                 ScSpecTypeResult {\n                     ok_type: BytesN(\n                         ScSpecTypeBytesN {\n                             n: 32,\n                         },\n                     ),\n                     error_type: Udt(\n                         ScSpecTypeUdt {\n                             name: StringM(UpgradeError),\n                         },\n                     ),\n                 },\n             ),\n         ],\n     )\n\n • Function: get_validators\n     Docs: Get validators.\n     Inputs: VecM(\n         [],\n     )\n     Output: VecM(\n         [\n             Vec(\n                 ScSpecTypeVec {\n                     element_type: BytesN(\n                         ScSpecTypeBytesN {\n                             n: 32,\n                         },\n                     ),\n                 },\n             ),\n         ],\n     )\n\n • Function: remove_manager\n     Docs: Remove registry manager.\\n\\nAuthorization:\\n- Admin only.\\n\\nSecurity model:\\n- Revokes the manager's ability to perform future recovery unlink actions.\\n- Existing identity bindings are not changed.\n     Inputs: VecM(\n         [\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(manager),\n                 type_: Address,\n             },\n         ],\n     )\n     Output: VecM(\n         [\n             Result(\n                 ScSpecTypeResult {\n                     ok_type: Void,\n                     error_type: Udt(\n                         ScSpecTypeUdt {\n                             name: StringM(RegistryError),\n                         },\n                     ),\n                 },\n             ),\n         ],\n     )\n\n • Function: cancel_proposal\n     Docs: Cancel active proposal.\\n\\nNotes:\\n- Admin only.\n     Inputs: VecM(\n         [],\n     )\n     Output: VecM(\n         [\n             Result(\n                 ScSpecTypeResult {\n                     ok_type: Void,\n                     error_type: Udt(\n                         ScSpecTypeUdt {\n                             name: StringM(UpgradeError),\n                         },\n                     ),\n                 },\n             ),\n         ],\n     )\n\n • Function: propose_upgrade\n     Docs: Create upgrade proposal.\\n\\nNotes:\\n- Admin only.\\n- Starts governance flow for new wasm hash.\n     Inputs: VecM(\n         [\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(proposal_type),\n                 type_: String,\n             },\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(new_wasm_hash),\n                 type_: BytesN(\n                     ScSpecTypeBytesN {\n                         n: 32,\n                     },\n                 ),\n             },\n         ],\n     )\n     Output: VecM(\n         [\n             Result(\n                 ScSpecTypeResult {\n                     ok_type: Void,\n                     error_type: Udt(\n                         ScSpecTypeUdt {\n                             name: StringM(UpgradeError),\n                         },\n                     ),\n                 },\n             ),\n         ],\n     )\n\n • Function: remove_validator\n     Docs: Remove validator.\\n\\nNotes:\\n- Admin only.\\n- Revokes validator trust for future checks.\n     Inputs: VecM(\n         [\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(validator),\n                 type_: BytesN(\n                     ScSpecTypeBytesN {\n                         n: 32,\n                     },\n                 ),\n             },\n         ],\n     )\n     Output: VecM(\n         [],\n     )\n\n • Function: set_id_wallet_map\n     Docs: Verify identity and bind wallet.\\n\\nNotes:\\n- Requires wallet authorization.\\n- Validates platform, user id, and validator signatures.\\n- Writes `(platform, user_id) -> wallet` mapping on success.\n     Inputs: VecM(\n         [\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(wallet),\n                 type_: Address,\n             },\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(user_id),\n                 type_: String,\n             },\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(platform_str),\n                 type_: String,\n             },\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(signatures),\n                 type_: Vec(\n                     ScSpecTypeVec {\n                         element_type: Udt(\n                             ScSpecTypeUdt {\n                                 name: StringM(ValidatorSignature),\n                             },\n                         ),\n                     },\n                 ),\n             },\n         ],\n     )\n     Output: VecM(\n         [\n             Result(\n                 ScSpecTypeResult {\n                     ok_type: Void,\n                     error_type: Udt(\n                         ScSpecTypeUdt {\n                             name: StringM(RegistryError),\n                         },\n                     ),\n                 },\n             ),\n         ],\n     )\n\n • Function: get_wallet_by_userid\n     Docs: Get wallet by `(platform, user_id)`.\\n\\nNotes:\\n- Returns `None` if not found.\n     Inputs: VecM(\n         [\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(platform),\n                 type_: String,\n             },\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(user_id),\n                 type_: String,\n             },\n         ],\n     )\n     Output: VecM(\n         [\n             Result(\n                 ScSpecTypeResult {\n                     ok_type: Option(\n                         ScSpecTypeOption {\n                             value_type: Address,\n                         },\n                     ),\n                     error_type: Udt(\n                         ScSpecTypeUdt {\n                             name: StringM(RegistryError),\n                         },\n                     ),\n                 },\n             ),\n         ],\n     )\n\n • Function: remove_id_wallet_map\n     Docs: Unlink identity binding by the currently bound wallet.\\n\\nAuthorization:\\n- The wallet currently bound to `(platform, user_id)` must authorize.\\n\\nSecurity model:\\n- Allows a wallet owner to voluntarily remove their social identity binding.\\n- After unlinking, rebinding must go through the normal validator-based link flow.\n     Inputs: VecM(\n         [\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(user_id),\n                 type_: String,\n             },\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(platform_str),\n                 type_: String,\n             },\n         ],\n     )\n     Output: VecM(\n         [\n             Result(\n                 ScSpecTypeResult {\n                     ok_type: Void,\n                     error_type: Udt(\n                         ScSpecTypeUdt {\n                             name: StringM(RegistryError),\n                         },\n                     ),\n                 },\n             ),\n         ],\n     )\n\n • Function: manager_remove_id_wallet_map\n     Docs: Recovery unlink by registry manager.\\n\\nAuthorization:\\n- Caller must be an approved registry manager.\\n\\nSecurity model:\\n- Used when the currently bound wallet is compromised, lost, or abandoned.\\n- Manager can only remove the stale identity mapping.\\n- Manager cannot rebind the identity to a new wallet.\\n- After unlinking, the user must complete the normal identity verification flow again.\n     Inputs: VecM(\n         [\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(user_id),\n                 type_: String,\n             },\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(platform_str),\n                 type_: String,\n             },\n             ScSpecFunctionInputV0 {\n                 doc: StringM(),\n                 name: StringM(manager),\n                 type_: Address,\n             },\n         ],\n     )\n     Output: VecM(\n         [\n             Result(\n                 ScSpecTypeResult {\n                     ok_type: Void,\n                     error_type: Udt(\n                         ScSpecTypeUdt {\n                             name: StringM(RegistryError),\n                         },\n                     ),\n                 },\n             ),\n         ],\n     )\n\n • Union: DataKey\n     Docs: Shared access/config storage keys.\\n\\nDESIGN:\\n- Most addresses here are contract-wide configuration and live in instance storage.\\n- Some identity-related keys are included for compatibility with other modules,\\neven if they are not read/written directly in this file.\\n\\nIMPORTANT:\\n- This file provides low-level storage/auth helpers only.\\n- It does not enforce higher-level business rules such as uniqueness between\\nconfigured addresses or one-time initialization beyond what callers enforce.\n     Cases:\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(Admin),\n            },\n        )\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(Factory),\n            },\n        )\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(Registry),\n            },\n        )\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(FeeManager),\n            },\n        )\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(SocialPayments),\n            },\n        )\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(PaymentManager),\n            },\n        )\n      • TupleV0(\n            ScSpecUdtUnionCaseTupleV0 {\n                doc: StringM(),\n                name: StringM(UseridWalletMap),\n                type_: VecM(\n                    [\n                        Bytes,\n                    ],\n                ),\n            },\n        )\n      • TupleV0(\n            ScSpecUdtUnionCaseTupleV0 {\n                doc: StringM(),\n                name: StringM(PasskeyWalletMap),\n                type_: VecM(\n                    [\n                        Bytes,\n                    ],\n                ),\n            },\n        )\n\n • Union: UpgradeType\n     Docs: Represents the type of upgrade proposal.\\n\\nVARIANTS:\\n- `Upgrade` \\xe2\\x86\\x92 upgrade the current contract WASM\\n- `WalletVersion` \\xe2\\x86\\x92 update approved wallet implementation hash\\n\\nDESIGN:\\n- Persisted in contract storage (`ProposalType`)\\n- Used to determine execution path during proposal finalization\\n\\nCRITICAL COMPATIBILITY NOTE:\\n- This enum is stored on-chain.\\n- DO NOT:\\n- reorder variants\\n- remove existing variants\\n\\n- Adding new variants requires:\\n- updating parsing logic (`upgrade_type`)\\n- ensuring existing stored values remain valid\n     Cases:\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(Upgrade),\n            },\n        )\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(WalletVersion),\n            },\n        )\n\n • Union: SocialPlatform\n     Cases:\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(X),\n            },\n        )\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(Discord),\n            },\n        )\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(Telegram),\n            },\n        )\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(Email),\n            },\n        )\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(Tiktok),\n            },\n        )\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(Sms),\n            },\n        )\n\n • Struct: ValidatorSignature\n     Docs: - No validation is performed here\n     Fields:\n      • signature: BytesN(\n            ScSpecTypeBytesN {\n                n: 64,\n            },\n        )\n      • validator: BytesN(\n            ScSpecTypeBytesN {\n                n: 32,\n            },\n        )\n\n • Error: RegistryError\n     Cases:\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(DuplicateValidator),\n            value: 101,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(InvalidThreshold),\n            value: 106,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(NotValidator),\n            value: 107,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(IncorrectNumberOfSignatures),\n            value: 108,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(PlatformNotSupported),\n            value: 409,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(UnsupportedAsset),\n            value: 417,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(UseridAlreadyMapped),\n            value: 443,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(PasskeyAlreadyMapped),\n            value: 444,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(NotClaimable),\n            value: 457,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(Expired),\n            value: 459,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(NotExpired),\n            value: 460,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(Unauthorized),\n            value: 461,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(NotRefundable),\n            value: 463,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(InvalidAmount),\n            value: 729,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(InvalidUserId),\n            value: 742,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(UpperNotAllowed),\n            value: 743,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(SpacesNotAllowed),\n            value: 744,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(MaxLengthExceeded),\n            value: 745,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(IdentityNotFound),\n            value: 4001,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(NotRegistryManager),\n            value: 4051,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(FactoryNotSet),\n            value: 4101,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(WalletAlreadyMapped),\n            value: 5001,\n        }\n\n • Struct: ProtocolDependencies\n     Docs: - No validation is performed here\n     Fields:\n      • fee_manager: Address\n      • registry: Address\n      • social_router: Address\n\n • Union: DataKey\n     Docs: Storage keys derived from normalized identity inputs.\\n\\nDESIGN:\\n- `UseridWalletMap` stores mappings derived from `(platform, user_id)`\\n- `PasskeyWalletMap` stores mappings derived from raw passkey bytes\\n\\nIMPORTANT:\\n- These keys depend on the exact hashing/domain-separation logic below.\\n- Changing encoding, validation, or domain strings will break compatibility\\nwith existing stored mappings.\n     Cases:\n      • TupleV0(\n            ScSpecUdtUnionCaseTupleV0 {\n                doc: StringM(),\n                name: StringM(UseridWalletMap),\n                type_: VecM(\n                    [\n                        Bytes,\n                    ],\n                ),\n            },\n        )\n      • TupleV0(\n            ScSpecUdtUnionCaseTupleV0 {\n                doc: StringM(),\n                name: StringM(PasskeyWalletMap),\n                type_: VecM(\n                    [\n                        Bytes,\n                    ],\n                ),\n            },\n        )\n\n • Union: DataKey\n     Docs: Shared storage keys for token utilities and asset configuration.\\n\\nNOTE:\\n- `AllowanceExpiration` is stored as a ledger offset, not an absolute ledger.\\n- Spend limits are stored in instance storage because they are contract-wide config.\\n- Supported assets are stored in persistent storage as a set-like `Map<Address, ()>`.\n     Cases:\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(Relative ledger offset used when creating token approvals.),\n                name: StringM(AllowanceExpiration),\n            },\n        )\n      • TupleV0(\n            ScSpecUdtUnionCaseTupleV0 {\n                doc: StringM(Per-asset spend limit override.),\n                name: StringM(SpendLimit),\n                type_: VecM(\n                    [\n                        Address,\n                    ],\n                ),\n            },\n        )\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(Set of assets supported by the caller contract.),\n                name: StringM(SupportedAssets),\n            },\n        )\n\n • Struct: DeferData\n     Fields:\n      • max_deferred_fee: I128\n      • updated_deferred_fee: I128\n\n • Union: FeeDecision\n     Cases:\n      • TupleV0(\n            ScSpecUdtUnionCaseTupleV0 {\n                doc: StringM(),\n                name: StringM(CollectNow),\n                type_: VecM(\n                    [\n                        Udt(\n                            ScSpecTypeUdt {\n                                name: StringM(CollectNowData),\n                            },\n                        ),\n                    ],\n                ),\n            },\n        )\n      • TupleV0(\n            ScSpecUdtUnionCaseTupleV0 {\n                doc: StringM(),\n                name: StringM(Defer),\n                type_: VecM(\n                    [\n                        Udt(\n                            ScSpecTypeUdt {\n                                name: StringM(DeferData),\n                            },\n                        ),\n                    ],\n                ),\n            },\n        )\n      • TupleV0(\n            ScSpecUdtUnionCaseTupleV0 {\n                doc: StringM(),\n                name: StringM(CannotProceed),\n                type_: VecM(\n                    [\n                        Udt(\n                            ScSpecTypeUdt {\n                                name: StringM(CannotProceedData),\n                            },\n                        ),\n                    ],\n                ),\n            },\n        )\n\n • Struct: FeePreference\n     Fields:\n      • asset: Address\n      • max_total_fee: I128\n\n • Struct: CollectNowData\n     Fields:\n      • fee_asset: Address\n      • max_total_fee: I128\n      • total_fee_in_asset: I128\n      • total_fee_in_base: I128\n\n • Struct: CannotProceedData\n     Fields:\n      • fee_asset: Option(\n            ScSpecTypeOption {\n                value_type: Address,\n            },\n        )\n      • max_deferred_fee: I128\n      • max_total_fee: Option(\n            ScSpecTypeOption {\n                value_type: I128,\n            },\n        )\n      • reason: Udt(\n            ScSpecTypeUdt {\n                name: StringM(CannotProceedReason),\n            },\n        )\n      • total_fee_in_asset: Option(\n            ScSpecTypeOption {\n                value_type: I128,\n            },\n        )\n      • total_fee_in_base: I128\n\n • Enum: CannotProceedReason\n     Cases:\n      • ScSpecUdtEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(UnsupportedFeeAsset),\n            value: 0,\n        }\n      • ScSpecUdtEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(FeeExceedsMaximum),\n            value: 1,\n        }\n      • ScSpecUdtEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(MaxDeferredFeeExceeded),\n            value: 2,\n        }\n      • ScSpecUdtEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(InvalidMaxTotalFee),\n            value: 3,\n        }\n\n • Union: UpgradeType\n     Docs: Represents the type of upgrade proposal.\\n\\nVARIANTS:\\n- Upgrade \\xe2\\x86\\x92 contract WASM upgrade\\n- WalletVersion \\xe2\\x86\\x92 update approved wallet implementation hash\\n\\nDESIGN NOTE:\\n- This enum is persisted in storage via `ProposalType`.\\n- Must remain backward-compatible across contract upgrades.\\n\\nIMPORTANT:\\n- Adding new variants in future requires:\\n- updating parsing logic (`upgrade_type`)\\n- ensuring backward compatibility with stored values\n     Cases:\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(Upgrade),\n            },\n        )\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(WalletVersion),\n            },\n        )\n\n • Error: UpgradeError\n     Cases:\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(AlreadyInitialized),\n            value: 411,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(AnotherUpgradePending),\n            value: 1001,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(NoPendingUpgradeAction),\n            value: 1005,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(UpgradeTypeNotFound),\n            value: 1008,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(VotingClosed),\n            value: 1009,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(VotingStillOngoing),\n            value: 1010,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(InvalidUpgradeHash),\n            value: 1011,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(AlreadyVoted),\n            value: 1013,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(NotInVotersList),\n            value: 1025,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(DidNotPass),\n            value: 1027,\n        }\n      • ScSpecUdtErrorEnumCaseV0 {\n            doc: StringM(),\n            name: StringM(NotEnoughVoters),\n            value: 1037,\n        }\n\n • Union: DataKey\n     Cases:\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(UpgradeVotingDeadline),\n            },\n        )\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(FutureWASM),\n            },\n        )\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(VotersList),\n            },\n        )\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(VotedList),\n            },\n        )\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(WalletVersion),\n            },\n        )\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(ProposalType),\n            },\n        )\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(ProposalApprovalThreshold),\n            },\n        )\n      • VoidV0(\n            ScSpecUdtUnionCaseVoidV0 {\n                doc: StringM(),\n                name: StringM(ProposalVoters),\n            },\n        )\n\n\n\n===== STELLAR INSPECT OUTPUT END =====\n===== PARSED FUNCTIONS =====\n[\n  {\n    \"name\": \"add_voter\",\n    \"doc\": \"Add governance voter.\\\\n\\\\nNotes:\\\\n- Admin only.\",\n    \"inputs\": [\n      {\n        \"name\": \"voter\",\n        \"type\": \"address\",\n        \"env\": \"VOTER\",\n        \"placeholder\": \"G...\"\n      }\n    ],\n    \"outputs\": [\n      {\n        \"name\": \"result\",\n        \"type\": \"result\"\n      },\n      {\n        \"name\": \"void\",\n        \"type\": \"void\"\n      },\n      {\n        \"name\": \"udt\",\n        \"type\": \"udt\"\n      }\n    ],\n    \"raw\": \"cli:inspect:add_voter\"\n  },\n  {\n    \"name\": \"cast_vote\",\n    \"doc\": \"Cast vote on active proposal.\\\\n\\\\nNotes:\\\\n- Voter must authorize.\\\\n- Records approval for supplied hash.\",\n    \"inputs\": [\n      {\n        \"name\": \"voter\",\n        \"type\": \"address\",\n        \"env\": \"VOTER\",\n        \"placeholder\": \"G...\"\n      },\n      {\n        \"name\": \"wasm_hash\",\n        \"type\": \"bytes\",\n        \"env\": \"WASM_HASH\",\n        \"placeholder\": \"00\"\n      }\n    ],\n    \"outputs\": [\n      {\n        \"name\": \"result\",\n        \"type\": \"result\"\n      },\n      {\n        \"name\": \"void\",\n        \"type\": \"void\"\n      },\n      {\n        \"name\": \"udt\",\n        \"type\": \"udt\"\n      }\n    ],\n    \"raw\": \"cli:inspect:cast_vote\"\n  },\n  {\n    \"name\": \"set_admin\",\n    \"doc\": \"Update admin.\\\\n\\\\nNotes:\\\\n- Admin only.\\\\n- Changes control over privileged registry actions.\",\n    \"inputs\": [\n      {\n        \"name\": \"new_admin\",\n        \"type\": \"address\",\n        \"env\": \"NEW_ADMIN\",\n        \"placeholder\": \"G...\"\n      }\n    ],\n    \"outputs\": [],\n    \"raw\": \"cli:inspect:set_admin\"\n  },\n  {\n    \"name\": \"add_manager\",\n    \"doc\": \"Add registry manager.\\\\n\\\\nAuthorization:\\\\n- Admin only.\\\\n\\\\nSecurity model:\\\\n- Registry managers are recovery operators.\\\\n- They may unlink stale or compromised identity bindings.\\\\n- They cannot create, overwrite, or rebind identity mappings.\",\n    \"inputs\": [\n      {\n        \"name\": \"manager\",\n        \"type\": \"address\",\n        \"env\": \"MANAGER\",\n        \"placeholder\": \"G...\"\n      }\n    ],\n    \"outputs\": [\n      {\n        \"name\": \"result\",\n        \"type\": \"result\"\n      },\n      {\n        \"name\": \"void\",\n        \"type\": \"void\"\n      },\n      {\n        \"name\": \"udt\",\n        \"type\": \"udt\"\n      }\n    ],\n    \"raw\": \"cli:inspect:add_manager\"\n  },\n  {\n    \"name\": \"remove_voter\",\n    \"doc\": \"Remove governance voter.\\\\n\\\\nNotes:\\\\n- Admin only.\",\n    \"inputs\": [\n      {\n        \"name\": \"voter\",\n        \"type\": \"address\",\n        \"env\": \"VOTER\",\n        \"placeholder\": \"G...\"\n      }\n    ],\n    \"outputs\": [\n      {\n        \"name\": \"result\",\n        \"type\": \"result\"\n      },\n      {\n        \"name\": \"void\",\n        \"type\": \"void\"\n      },\n      {\n        \"name\": \"udt\",\n        \"type\": \"udt\"\n      }\n    ],\n    \"raw\": \"cli:inspect:remove_voter\"\n  },\n  {\n    \"name\": \"__constructor\",\n    \"doc\": \"Initialize registry.\\\\n\\\\nNotes:\\\\n- Sets initial admin.\\\\n- Intended to run once.\",\n    \"inputs\": [\n      {\n        \"name\": \"admin\",\n        \"type\": \"address\",\n        \"env\": \"ADMIN\",\n        \"placeholder\": \"G...\"\n      }\n    ],\n    \"outputs\": [\n      {\n        \"name\": \"result\",\n        \"type\": \"result\"\n      },\n      {\n        \"name\": \"void\",\n        \"type\": \"void\"\n      },\n      {\n        \"name\": \"udt\",\n        \"type\": \"udt\"\n      }\n    ],\n    \"raw\": \"cli:inspect:__constructor\"\n  },\n  {\n    \"name\": \"add_validator\",\n    \"doc\": \"Add validator.\\\\n\\\\nNotes:\\\\n- Admin only.\\\\n- Expands trusted signer set.\",\n    \"inputs\": [\n      {\n        \"name\": \"validator\",\n        \"type\": \"bytes\",\n        \"env\": \"VALIDATOR\",\n        \"placeholder\": \"00\"\n      }\n    ],\n    \"outputs\": [],\n    \"raw\": \"cli:inspect:add_validator\"\n  },\n  {\n    \"name\": \"apply_upgrade\",\n    \"doc\": \"Execute approved upgrade.\\\\n\\\\nNotes:\\\\n- Admin only.\\\\n- Applies current passed proposal.\",\n    \"inputs\": [],\n    \"outputs\": [\n      {\n        \"name\": \"result\",\n        \"type\": \"result\"\n      },\n      {\n        \"name\": \"bytes\",\n        \"type\": \"bytes\"\n      },\n      {\n        \"name\": \"udt\",\n        \"type\": \"udt\"\n      }\n    ],\n    \"raw\": \"cli:inspect:apply_upgrade\"\n  },\n  {\n    \"name\": \"get_validators\",\n    \"doc\": \"Get validators.\",\n    \"inputs\": [],\n    \"outputs\": [\n      {\n        \"name\": \"vec\",\n        \"type\": \"vec\"\n      },\n      {\n        \"name\": \"bytes\",\n        \"type\": \"bytes\"\n      }\n    ],\n    \"raw\": \"cli:inspect:get_validators\"\n  },\n  {\n    \"name\": \"remove_manager\",\n    \"doc\": \"Remove registry manager.\\\\n\\\\nAuthorization:\\\\n- Admin only.\\\\n\\\\nSecurity model:\\\\n- Revokes the manager's ability to perform future recovery unlink actions.\\\\n- Existing identity bindings are not changed.\",\n    \"inputs\": [\n      {\n        \"name\": \"manager\",\n        \"type\": \"address\",\n        \"env\": \"MANAGER\",\n        \"placeholder\": \"G...\"\n      }\n    ],\n    \"outputs\": [\n      {\n        \"name\": \"result\",\n        \"type\": \"result\"\n      },\n      {\n        \"name\": \"void\",\n        \"type\": \"void\"\n      },\n      {\n        \"name\": \"udt\",\n        \"type\": \"udt\"\n      }\n    ],\n    \"raw\": \"cli:inspect:remove_manager\"\n  },\n  {\n    \"name\": \"cancel_proposal\",\n    \"doc\": \"Cancel active proposal.\\\\n\\\\nNotes:\\\\n- Admin only.\",\n    \"inputs\": [],\n    \"outputs\": [\n      {\n        \"name\": \"result\",\n        \"type\": \"result\"\n      },\n      {\n        \"name\": \"void\",\n        \"type\": \"void\"\n      },\n      {\n        \"name\": \"udt\",\n        \"type\": \"udt\"\n      }\n    ],\n    \"raw\": \"cli:inspect:cancel_proposal\"\n  },\n  {\n    \"name\": \"propose_upgrade\",\n    \"doc\": \"Create upgrade proposal.\\\\n\\\\nNotes:\\\\n- Admin only.\\\\n- Starts governance flow for new wasm hash.\",\n    \"inputs\": [\n      {\n        \"name\": \"proposal_type\",\n        \"type\": \"string\",\n        \"env\": \"PROPOSAL_TYPE\",\n        \"placeholder\": \"sample\"\n      },\n      {\n        \"name\": \"new_wasm_hash\",\n        \"type\": \"bytes\",\n        \"env\": \"NEW_WASM_HASH\",\n        \"placeholder\": \"00\"\n      }\n    ],\n    \"outputs\": [\n      {\n        \"name\": \"result\",\n        \"type\": \"result\"\n      },\n      {\n        \"name\": \"void\",\n        \"type\": \"void\"\n      },\n      {\n        \"name\": \"udt\",\n        \"type\": \"udt\"\n      }\n    ],\n    \"raw\": \"cli:inspect:propose_upgrade\"\n  },\n  {\n    \"name\": \"remove_validator\",\n    \"doc\": \"Remove validator.\\\\n\\\\nNotes:\\\\n- Admin only.\\\\n- Revokes validator trust for future checks.\",\n    \"inputs\": [\n      {\n        \"name\": \"validator\",\n        \"type\": \"bytes\",\n        \"env\": \"VALIDATOR\",\n        \"placeholder\": \"00\"\n      }\n    ],\n    \"outputs\": [],\n    \"raw\": \"cli:inspect:remove_validator\"\n  },\n  {\n    \"name\": \"set_id_wallet_map\",\n    \"doc\": \"Verify identity and bind wallet.\\\\n\\\\nNotes:\\\\n- Requires wallet authorization.\\\\n- Validates platform, user id, and validator signatures.\\\\n- Writes `(platform, user_id) -> wallet` mapping on success.\",\n    \"inputs\": [\n      {\n        \"name\": \"wallet\",\n        \"type\": \"address\",\n        \"env\": \"WALLET\",\n        \"placeholder\": \"G...\"\n      },\n      {\n        \"name\": \"user_id\",\n        \"type\": \"string\",\n        \"env\": \"USER_ID\",\n        \"placeholder\": \"sample\"\n      },\n      {\n        \"name\": \"platform_str\",\n        \"type\": \"string\",\n        \"env\": \"PLATFORM_STR\",\n        \"placeholder\": \"sample\"\n      },\n      {\n        \"name\": \"signatures\",\n        \"type\": \"vec\",\n        \"env\": \"SIGNATURES\",\n        \"placeholder\": \"[]\"\n      }\n    ],\n    \"outputs\": [\n      {\n        \"name\": \"result\",\n        \"type\": \"result\"\n      },\n      {\n        \"name\": \"void\",\n        \"type\": \"void\"\n      },\n      {\n        \"name\": \"udt\",\n        \"type\": \"udt\"\n      }\n    ],\n    \"raw\": \"cli:inspect:set_id_wallet_map\"\n  },\n  {\n    \"name\": \"get_wallet_by_userid\",\n    \"doc\": \"Get wallet by `(platform, user_id)`.\\\\n\\\\nNotes:\\\\n- Returns `None` if not found.\",\n    \"inputs\": [\n      {\n        \"name\": \"platform\",\n        \"type\": \"string\",\n        \"env\": \"PLATFORM\",\n        \"placeholder\": \"sample\"\n      },\n      {\n        \"name\": \"user_id\",\n        \"type\": \"string\",\n        \"env\": \"USER_ID\",\n        \"placeholder\": \"sample\"\n      }\n    ],\n    \"outputs\": [\n      {\n        \"name\": \"result\",\n        \"type\": \"result\"\n      },\n      {\n        \"name\": \"option\",\n        \"type\": \"option\"\n      },\n      {\n        \"name\": \"address\",\n        \"type\": \"address\"\n      },\n      {\n        \"name\": \"udt\",\n        \"type\": \"udt\"\n      }\n    ],\n    \"raw\": \"cli:inspect:get_wallet_by_userid\"\n  },\n  {\n    \"name\": \"remove_id_wallet_map\",\n    \"doc\": \"Unlink identity binding by the currently bound wallet.\\\\n\\\\nAuthorization:\\\\n- The wallet currently bound to `(platform, user_id)` must authorize.\\\\n\\\\nSecurity model:\\\\n- Allows a wallet owner to voluntarily remove their social identity binding.\\\\n- After unlinking, rebinding must go through the normal validator-based link flow.\",\n    \"inputs\": [\n      {\n        \"name\": \"user_id\",\n        \"type\": \"string\",\n        \"env\": \"USER_ID\",\n        \"placeholder\": \"sample\"\n      },\n      {\n        \"name\": \"platform_str\",\n        \"type\": \"string\",\n        \"env\": \"PLATFORM_STR\",\n        \"placeholder\": \"sample\"\n      }\n    ],\n    \"outputs\": [\n      {\n        \"name\": \"result\",\n        \"type\": \"result\"\n      },\n      {\n        \"name\": \"void\",\n        \"type\": \"void\"\n      },\n      {\n        \"name\": \"udt\",\n        \"type\": \"udt\"\n      }\n    ],\n    \"raw\": \"cli:inspect:remove_id_wallet_map\"\n  },\n  {\n    \"name\": \"manager_remove_id_wallet_map\",\n    \"doc\": \"Recovery unlink by registry manager.\\\\n\\\\nAuthorization:\\\\n- Caller must be an approved registry manager.\\\\n\\\\nSecurity model:\\\\n- Used when the currently bound wallet is compromised, lost, or abandoned.\\\\n- Manager can only remove the stale identity mapping.\\\\n- Manager cannot rebind the identity to a new wallet.\\\\n- After unlinking, the user must complete the normal identity verification flow again.\",\n    \"inputs\": [\n      {\n        \"name\": \"user_id\",\n        \"type\": \"string\",\n        \"env\": \"USER_ID\",\n        \"placeholder\": \"sample\"\n      },\n      {\n        \"name\": \"platform_str\",\n        \"type\": \"string\",\n        \"env\": \"PLATFORM_STR\",\n        \"placeholder\": \"sample\"\n      },\n      {\n        \"name\": \"manager\",\n        \"type\": \"address\",\n        \"env\": \"MANAGER\",\n        \"placeholder\": \"G...\"\n      }\n    ],\n    \"outputs\": [\n      {\n        \"name\": \"result\",\n        \"type\": \"result\"\n      },\n      {\n        \"name\": \"void\",\n        \"type\": \"void\"\n      },\n      {\n        \"name\": \"udt\",\n        \"type\": \"udt\"\n      },\n      {\n        \"name\": \"bytes\",\n        \"type\": \"bytes\"\n      },\n      {\n        \"name\": \"address\",\n        \"type\": \"address\"\n      },\n      {\n        \"name\": \"map\",\n        \"type\": \"map\"\n      },\n      {\n        \"name\": \"i128\",\n        \"type\": \"i128\"\n      },\n      {\n        \"name\": \"option\",\n        \"type\": \"option\"\n      }\n    ],\n    \"raw\": \"cli:inspect:manager_remove_id_wallet_map\"\n  }\n]\n\n✅ Sorobuild Flow bootstrap complete\n📦 Output: /app/.storage/workflows/owners/sorobuild_flow_browser_9c3b1a12-fefa-433a-80a0-70f503414963/workflows/wf_1783484256154_a4b7ed5e/generated\n  • socketfi_identity_registry_optimized: .storage/workflows/owners/sorobuild_flow_browser_9c3b1a12-fefa-433a-80a0-70f503414963/workflows/wf_1783484256154_a4b7ed5e/generated\n\nNext:\n  cd /app/.storage/workflows/owners/sorobuild_flow_browser_9c3b1a12-fefa-433a-80a0-70f503414963/workflows/wf_1783484256154_a4b7ed5e/generated\n  # If one contract, run: ./scripts/deploy.sh\n  # If multiple contracts, open ./contracts/<name>/ and run ./scripts/deploy.sh\n",
+  "stderr": "⚠️  `stellar contract optimize` is deprecated and will be removed in future versions of the CLI. Use `stellar contract build --optimize` instead.\n",
+  "contractName": "socketfi_identity_registry_optimized",
+  "contractCount": 1,
+  "functionCount": 16,
+  "functions": [
+    {
+      "name": "add_voter",
+      "doc": "Add governance voter.\\n\\nNotes:\\n- Admin only.",
+      "inputs": [
+        {
+          "name": "voter",
+          "type": "address",
+          "env": "VOTER",
+          "placeholder": "G..."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "result"
+        },
+        {
+          "name": "void",
+          "type": "void"
+        },
+        {
+          "name": "udt",
+          "type": "udt"
+        }
+      ],
+      "raw": "cli:inspect:add_voter",
+      "contractName": "socketfi_identity_registry_optimized",
+      "contractRoot": ""
+    },
+    {
+      "name": "cast_vote",
+      "doc": "Cast vote on active proposal.\\n\\nNotes:\\n- Voter must authorize.\\n- Records approval for supplied hash.",
+      "inputs": [
+        {
+          "name": "voter",
+          "type": "address",
+          "env": "VOTER",
+          "placeholder": "G..."
+        },
+        {
+          "name": "wasm_hash",
+          "type": "bytes",
+          "env": "WASM_HASH",
+          "placeholder": "00"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "result"
+        },
+        {
+          "name": "void",
+          "type": "void"
+        },
+        {
+          "name": "udt",
+          "type": "udt"
+        }
+      ],
+      "raw": "cli:inspect:cast_vote",
+      "contractName": "socketfi_identity_registry_optimized",
+      "contractRoot": ""
+    },
+    {
+      "name": "set_admin",
+      "doc": "Update admin.\\n\\nNotes:\\n- Admin only.\\n- Changes control over privileged registry actions.",
+      "inputs": [
+        {
+          "name": "new_admin",
+          "type": "address",
+          "env": "NEW_ADMIN",
+          "placeholder": "G..."
+        }
+      ],
+      "outputs": [],
+      "raw": "cli:inspect:set_admin",
+      "contractName": "socketfi_identity_registry_optimized",
+      "contractRoot": ""
+    },
+    {
+      "name": "add_manager",
+      "doc": "Add registry manager.\\n\\nAuthorization:\\n- Admin only.\\n\\nSecurity model:\\n- Registry managers are recovery operators.\\n- They may unlink stale or compromised identity bindings.\\n- They cannot create, overwrite, or rebind identity mappings.",
+      "inputs": [
+        {
+          "name": "manager",
+          "type": "address",
+          "env": "MANAGER",
+          "placeholder": "G..."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "result"
+        },
+        {
+          "name": "void",
+          "type": "void"
+        },
+        {
+          "name": "udt",
+          "type": "udt"
+        }
+      ],
+      "raw": "cli:inspect:add_manager",
+      "contractName": "socketfi_identity_registry_optimized",
+      "contractRoot": ""
+    },
+    {
+      "name": "remove_voter",
+      "doc": "Remove governance voter.\\n\\nNotes:\\n- Admin only.",
+      "inputs": [
+        {
+          "name": "voter",
+          "type": "address",
+          "env": "VOTER",
+          "placeholder": "G..."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "result"
+        },
+        {
+          "name": "void",
+          "type": "void"
+        },
+        {
+          "name": "udt",
+          "type": "udt"
+        }
+      ],
+      "raw": "cli:inspect:remove_voter",
+      "contractName": "socketfi_identity_registry_optimized",
+      "contractRoot": ""
+    },
+    {
+      "name": "add_validator",
+      "doc": "Add validator.\\n\\nNotes:\\n- Admin only.\\n- Expands trusted signer set.",
+      "inputs": [
+        {
+          "name": "validator",
+          "type": "bytes",
+          "env": "VALIDATOR",
+          "placeholder": "00"
+        }
+      ],
+      "outputs": [],
+      "raw": "cli:inspect:add_validator",
+      "contractName": "socketfi_identity_registry_optimized",
+      "contractRoot": ""
+    },
+    {
+      "name": "apply_upgrade",
+      "doc": "Execute approved upgrade.\\n\\nNotes:\\n- Admin only.\\n- Applies current passed proposal.",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "result"
+        },
+        {
+          "name": "bytes",
+          "type": "bytes"
+        },
+        {
+          "name": "udt",
+          "type": "udt"
+        }
+      ],
+      "raw": "cli:inspect:apply_upgrade",
+      "contractName": "socketfi_identity_registry_optimized",
+      "contractRoot": ""
+    },
+    {
+      "name": "get_validators",
+      "doc": "Get validators.",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "vec",
+          "type": "vec"
+        },
+        {
+          "name": "bytes",
+          "type": "bytes"
+        }
+      ],
+      "raw": "cli:inspect:get_validators",
+      "contractName": "socketfi_identity_registry_optimized",
+      "contractRoot": ""
+    },
+    {
+      "name": "remove_manager",
+      "doc": "Remove registry manager.\\n\\nAuthorization:\\n- Admin only.\\n\\nSecurity model:\\n- Revokes the manager's ability to perform future recovery unlink actions.\\n- Existing identity bindings are not changed.",
+      "inputs": [
+        {
+          "name": "manager",
+          "type": "address",
+          "env": "MANAGER",
+          "placeholder": "G..."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "result"
+        },
+        {
+          "name": "void",
+          "type": "void"
+        },
+        {
+          "name": "udt",
+          "type": "udt"
+        }
+      ],
+      "raw": "cli:inspect:remove_manager",
+      "contractName": "socketfi_identity_registry_optimized",
+      "contractRoot": ""
+    },
+    {
+      "name": "cancel_proposal",
+      "doc": "Cancel active proposal.\\n\\nNotes:\\n- Admin only.",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "result"
+        },
+        {
+          "name": "void",
+          "type": "void"
+        },
+        {
+          "name": "udt",
+          "type": "udt"
+        }
+      ],
+      "raw": "cli:inspect:cancel_proposal",
+      "contractName": "socketfi_identity_registry_optimized",
+      "contractRoot": ""
+    },
+    {
+      "name": "propose_upgrade",
+      "doc": "Create upgrade proposal.\\n\\nNotes:\\n- Admin only.\\n- Starts governance flow for new wasm hash.",
+      "inputs": [
+        {
+          "name": "proposal_type",
+          "type": "string",
+          "env": "PROPOSAL_TYPE",
+          "placeholder": "sample"
+        },
+        {
+          "name": "new_wasm_hash",
+          "type": "bytes",
+          "env": "NEW_WASM_HASH",
+          "placeholder": "00"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "result"
+        },
+        {
+          "name": "void",
+          "type": "void"
+        },
+        {
+          "name": "udt",
+          "type": "udt"
+        }
+      ],
+      "raw": "cli:inspect:propose_upgrade",
+      "contractName": "socketfi_identity_registry_optimized",
+      "contractRoot": ""
+    },
+    {
+      "name": "remove_validator",
+      "doc": "Remove validator.\\n\\nNotes:\\n- Admin only.\\n- Revokes validator trust for future checks.",
+      "inputs": [
+        {
+          "name": "validator",
+          "type": "bytes",
+          "env": "VALIDATOR",
+          "placeholder": "00"
+        }
+      ],
+      "outputs": [],
+      "raw": "cli:inspect:remove_validator",
+      "contractName": "socketfi_identity_registry_optimized",
+      "contractRoot": ""
+    },
+    {
+      "name": "set_id_wallet_map",
+      "doc": "Verify identity and bind wallet.\\n\\nNotes:\\n- Requires wallet authorization.\\n- Validates platform, user id, and validator signatures.\\n- Writes `(platform, user_id) -> wallet` mapping on success.",
+      "inputs": [
+        {
+          "name": "wallet",
+          "type": "address",
+          "env": "WALLET",
+          "placeholder": "G..."
+        },
+        {
+          "name": "user_id",
+          "type": "string",
+          "env": "USER_ID",
+          "placeholder": "sample"
+        },
+        {
+          "name": "platform_str",
+          "type": "string",
+          "env": "PLATFORM_STR",
+          "placeholder": "sample"
+        },
+        {
+          "name": "signatures",
+          "type": "vec",
+          "env": "SIGNATURES",
+          "placeholder": "[]"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "result"
+        },
+        {
+          "name": "void",
+          "type": "void"
+        },
+        {
+          "name": "udt",
+          "type": "udt"
+        }
+      ],
+      "raw": "cli:inspect:set_id_wallet_map",
+      "contractName": "socketfi_identity_registry_optimized",
+      "contractRoot": ""
+    },
+    {
+      "name": "get_wallet_by_userid",
+      "doc": "Get wallet by `(platform, user_id)`.\\n\\nNotes:\\n- Returns `None` if not found.",
+      "inputs": [
+        {
+          "name": "platform",
+          "type": "string",
+          "env": "PLATFORM",
+          "placeholder": "sample"
+        },
+        {
+          "name": "user_id",
+          "type": "string",
+          "env": "USER_ID",
+          "placeholder": "sample"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "result"
+        },
+        {
+          "name": "option",
+          "type": "option"
+        },
+        {
+          "name": "address",
+          "type": "address"
+        },
+        {
+          "name": "udt",
+          "type": "udt"
+        }
+      ],
+      "raw": "cli:inspect:get_wallet_by_userid",
+      "contractName": "socketfi_identity_registry_optimized",
+      "contractRoot": ""
+    },
+    {
+      "name": "remove_id_wallet_map",
+      "doc": "Unlink identity binding by the currently bound wallet.\\n\\nAuthorization:\\n- The wallet currently bound to `(platform, user_id)` must authorize.\\n\\nSecurity model:\\n- Allows a wallet owner to voluntarily remove their social identity binding.\\n- After unlinking, rebinding must go through the normal validator-based link flow.",
+      "inputs": [
+        {
+          "name": "user_id",
+          "type": "string",
+          "env": "USER_ID",
+          "placeholder": "sample"
+        },
+        {
+          "name": "platform_str",
+          "type": "string",
+          "env": "PLATFORM_STR",
+          "placeholder": "sample"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "result"
+        },
+        {
+          "name": "void",
+          "type": "void"
+        },
+        {
+          "name": "udt",
+          "type": "udt"
+        }
+      ],
+      "raw": "cli:inspect:remove_id_wallet_map",
+      "contractName": "socketfi_identity_registry_optimized",
+      "contractRoot": ""
+    },
+    {
+      "name": "manager_remove_id_wallet_map",
+      "doc": "Recovery unlink by registry manager.\\n\\nAuthorization:\\n- Caller must be an approved registry manager.\\n\\nSecurity model:\\n- Used when the currently bound wallet is compromised, lost, or abandoned.\\n- Manager can only remove the stale identity mapping.\\n- Manager cannot rebind the identity to a new wallet.\\n- After unlinking, the user must complete the normal identity verification flow again.",
+      "inputs": [
+        {
+          "name": "user_id",
+          "type": "string",
+          "env": "USER_ID",
+          "placeholder": "sample"
+        },
+        {
+          "name": "platform_str",
+          "type": "string",
+          "env": "PLATFORM_STR",
+          "placeholder": "sample"
+        },
+        {
+          "name": "manager",
+          "type": "address",
+          "env": "MANAGER",
+          "placeholder": "G..."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "result"
+        },
+        {
+          "name": "void",
+          "type": "void"
+        },
+        {
+          "name": "udt",
+          "type": "udt"
+        },
+        {
+          "name": "bytes",
+          "type": "bytes"
+        },
+        {
+          "name": "address",
+          "type": "address"
+        },
+        {
+          "name": "map",
+          "type": "map"
+        },
+        {
+          "name": "i128",
+          "type": "i128"
+        },
+        {
+          "name": "option",
+          "type": "option"
+        }
+      ],
+      "raw": "cli:inspect:manager_remove_id_wallet_map",
+      "contractName": "socketfi_identity_registry_optimized",
+      "contractRoot": ""
+    }
+  ],
+  "contracts": [
+    {
+      "contractName": "socketfi_identity_registry_optimized",
+      "manifestPath": "manifest.json",
+      "rootDir": "",
+      "functionCount": 16,
+      "functions": [
+        {
+          "name": "add_voter",
+          "doc": "Add governance voter.\\n\\nNotes:\\n- Admin only.",
+          "inputs": [
+            {
+              "name": "voter",
+              "type": "address",
+              "env": "VOTER",
+              "placeholder": "G..."
+            }
+          ],
+          "outputs": [
+            {
+              "name": "result",
+              "type": "result"
+            },
+            {
+              "name": "void",
+              "type": "void"
+            },
+            {
+              "name": "udt",
+              "type": "udt"
+            }
+          ],
+          "raw": "cli:inspect:add_voter"
+        },
+        {
+          "name": "cast_vote",
+          "doc": "Cast vote on active proposal.\\n\\nNotes:\\n- Voter must authorize.\\n- Records approval for supplied hash.",
+          "inputs": [
+            {
+              "name": "voter",
+              "type": "address",
+              "env": "VOTER",
+              "placeholder": "G..."
+            },
+            {
+              "name": "wasm_hash",
+              "type": "bytes",
+              "env": "WASM_HASH",
+              "placeholder": "00"
+            }
+          ],
+          "outputs": [
+            {
+              "name": "result",
+              "type": "result"
+            },
+            {
+              "name": "void",
+              "type": "void"
+            },
+            {
+              "name": "udt",
+              "type": "udt"
+            }
+          ],
+          "raw": "cli:inspect:cast_vote"
+        },
+        {
+          "name": "set_admin",
+          "doc": "Update admin.\\n\\nNotes:\\n- Admin only.\\n- Changes control over privileged registry actions.",
+          "inputs": [
+            {
+              "name": "new_admin",
+              "type": "address",
+              "env": "NEW_ADMIN",
+              "placeholder": "G..."
+            }
+          ],
+          "outputs": [],
+          "raw": "cli:inspect:set_admin"
+        },
+        {
+          "name": "add_manager",
+          "doc": "Add registry manager.\\n\\nAuthorization:\\n- Admin only.\\n\\nSecurity model:\\n- Registry managers are recovery operators.\\n- They may unlink stale or compromised identity bindings.\\n- They cannot create, overwrite, or rebind identity mappings.",
+          "inputs": [
+            {
+              "name": "manager",
+              "type": "address",
+              "env": "MANAGER",
+              "placeholder": "G..."
+            }
+          ],
+          "outputs": [
+            {
+              "name": "result",
+              "type": "result"
+            },
+            {
+              "name": "void",
+              "type": "void"
+            },
+            {
+              "name": "udt",
+              "type": "udt"
+            }
+          ],
+          "raw": "cli:inspect:add_manager"
+        },
+        {
+          "name": "remove_voter",
+          "doc": "Remove governance voter.\\n\\nNotes:\\n- Admin only.",
+          "inputs": [
+            {
+              "name": "voter",
+              "type": "address",
+              "env": "VOTER",
+              "placeholder": "G..."
+            }
+          ],
+          "outputs": [
+            {
+              "name": "result",
+              "type": "result"
+            },
+            {
+              "name": "void",
+              "type": "void"
+            },
+            {
+              "name": "udt",
+              "type": "udt"
+            }
+          ],
+          "raw": "cli:inspect:remove_voter"
+        },
+        {
+          "name": "add_validator",
+          "doc": "Add validator.\\n\\nNotes:\\n- Admin only.\\n- Expands trusted signer set.",
+          "inputs": [
+            {
+              "name": "validator",
+              "type": "bytes",
+              "env": "VALIDATOR",
+              "placeholder": "00"
+            }
+          ],
+          "outputs": [],
+          "raw": "cli:inspect:add_validator"
+        },
+        {
+          "name": "apply_upgrade",
+          "doc": "Execute approved upgrade.\\n\\nNotes:\\n- Admin only.\\n- Applies current passed proposal.",
+          "inputs": [],
+          "outputs": [
+            {
+              "name": "result",
+              "type": "result"
+            },
+            {
+              "name": "bytes",
+              "type": "bytes"
+            },
+            {
+              "name": "udt",
+              "type": "udt"
+            }
+          ],
+          "raw": "cli:inspect:apply_upgrade"
+        },
+        {
+          "name": "get_validators",
+          "doc": "Get validators.",
+          "inputs": [],
+          "outputs": [
+            {
+              "name": "vec",
+              "type": "vec"
+            },
+            {
+              "name": "bytes",
+              "type": "bytes"
+            }
+          ],
+          "raw": "cli:inspect:get_validators"
+        },
+        {
+          "name": "remove_manager",
+          "doc": "Remove registry manager.\\n\\nAuthorization:\\n- Admin only.\\n\\nSecurity model:\\n- Revokes the manager's ability to perform future recovery unlink actions.\\n- Existing identity bindings are not changed.",
+          "inputs": [
+            {
+              "name": "manager",
+              "type": "address",
+              "env": "MANAGER",
+              "placeholder": "G..."
+            }
+          ],
+          "outputs": [
+            {
+              "name": "result",
+              "type": "result"
+            },
+            {
+              "name": "void",
+              "type": "void"
+            },
+            {
+              "name": "udt",
+              "type": "udt"
+            }
+          ],
+          "raw": "cli:inspect:remove_manager"
+        },
+        {
+          "name": "cancel_proposal",
+          "doc": "Cancel active proposal.\\n\\nNotes:\\n- Admin only.",
+          "inputs": [],
+          "outputs": [
+            {
+              "name": "result",
+              "type": "result"
+            },
+            {
+              "name": "void",
+              "type": "void"
+            },
+            {
+              "name": "udt",
+              "type": "udt"
+            }
+          ],
+          "raw": "cli:inspect:cancel_proposal"
+        },
+        {
+          "name": "propose_upgrade",
+          "doc": "Create upgrade proposal.\\n\\nNotes:\\n- Admin only.\\n- Starts governance flow for new wasm hash.",
+          "inputs": [
+            {
+              "name": "proposal_type",
+              "type": "string",
+              "env": "PROPOSAL_TYPE",
+              "placeholder": "sample"
+            },
+            {
+              "name": "new_wasm_hash",
+              "type": "bytes",
+              "env": "NEW_WASM_HASH",
+              "placeholder": "00"
+            }
+          ],
+          "outputs": [
+            {
+              "name": "result",
+              "type": "result"
+            },
+            {
+              "name": "void",
+              "type": "void"
+            },
+            {
+              "name": "udt",
+              "type": "udt"
+            }
+          ],
+          "raw": "cli:inspect:propose_upgrade"
+        },
+        {
+          "name": "remove_validator",
+          "doc": "Remove validator.\\n\\nNotes:\\n- Admin only.\\n- Revokes validator trust for future checks.",
+          "inputs": [
+            {
+              "name": "validator",
+              "type": "bytes",
+              "env": "VALIDATOR",
+              "placeholder": "00"
+            }
+          ],
+          "outputs": [],
+          "raw": "cli:inspect:remove_validator"
+        },
+        {
+          "name": "set_id_wallet_map",
+          "doc": "Verify identity and bind wallet.\\n\\nNotes:\\n- Requires wallet authorization.\\n- Validates platform, user id, and validator signatures.\\n- Writes `(platform, user_id) -> wallet` mapping on success.",
+          "inputs": [
+            {
+              "name": "wallet",
+              "type": "address",
+              "env": "WALLET",
+              "placeholder": "G..."
+            },
+            {
+              "name": "user_id",
+              "type": "string",
+              "env": "USER_ID",
+              "placeholder": "sample"
+            },
+            {
+              "name": "platform_str",
+              "type": "string",
+              "env": "PLATFORM_STR",
+              "placeholder": "sample"
+            },
+            {
+              "name": "signatures",
+              "type": "vec",
+              "env": "SIGNATURES",
+              "placeholder": "[]"
+            }
+          ],
+          "outputs": [
+            {
+              "name": "result",
+              "type": "result"
+            },
+            {
+              "name": "void",
+              "type": "void"
+            },
+            {
+              "name": "udt",
+              "type": "udt"
+            }
+          ],
+          "raw": "cli:inspect:set_id_wallet_map"
+        },
+        {
+          "name": "get_wallet_by_userid",
+          "doc": "Get wallet by `(platform, user_id)`.\\n\\nNotes:\\n- Returns `None` if not found.",
+          "inputs": [
+            {
+              "name": "platform",
+              "type": "string",
+              "env": "PLATFORM",
+              "placeholder": "sample"
+            },
+            {
+              "name": "user_id",
+              "type": "string",
+              "env": "USER_ID",
+              "placeholder": "sample"
+            }
+          ],
+          "outputs": [
+            {
+              "name": "result",
+              "type": "result"
+            },
+            {
+              "name": "option",
+              "type": "option"
+            },
+            {
+              "name": "address",
+              "type": "address"
+            },
+            {
+              "name": "udt",
+              "type": "udt"
+            }
+          ],
+          "raw": "cli:inspect:get_wallet_by_userid"
+        },
+        {
+          "name": "remove_id_wallet_map",
+          "doc": "Unlink identity binding by the currently bound wallet.\\n\\nAuthorization:\\n- The wallet currently bound to `(platform, user_id)` must authorize.\\n\\nSecurity model:\\n- Allows a wallet owner to voluntarily remove their social identity binding.\\n- After unlinking, rebinding must go through the normal validator-based link flow.",
+          "inputs": [
+            {
+              "name": "user_id",
+              "type": "string",
+              "env": "USER_ID",
+              "placeholder": "sample"
+            },
+            {
+              "name": "platform_str",
+              "type": "string",
+              "env": "PLATFORM_STR",
+              "placeholder": "sample"
+            }
+          ],
+          "outputs": [
+            {
+              "name": "result",
+              "type": "result"
+            },
+            {
+              "name": "void",
+              "type": "void"
+            },
+            {
+              "name": "udt",
+              "type": "udt"
+            }
+          ],
+          "raw": "cli:inspect:remove_id_wallet_map"
+        },
+        {
+          "name": "manager_remove_id_wallet_map",
+          "doc": "Recovery unlink by registry manager.\\n\\nAuthorization:\\n- Caller must be an approved registry manager.\\n\\nSecurity model:\\n- Used when the currently bound wallet is compromised, lost, or abandoned.\\n- Manager can only remove the stale identity mapping.\\n- Manager cannot rebind the identity to a new wallet.\\n- After unlinking, the user must complete the normal identity verification flow again.",
+          "inputs": [
+            {
+              "name": "user_id",
+              "type": "string",
+              "env": "USER_ID",
+              "placeholder": "sample"
+            },
+            {
+              "name": "platform_str",
+              "type": "string",
+              "env": "PLATFORM_STR",
+              "placeholder": "sample"
+            },
+            {
+              "name": "manager",
+              "type": "address",
+              "env": "MANAGER",
+              "placeholder": "G..."
+            }
+          ],
+          "outputs": [
+            {
+              "name": "result",
+              "type": "result"
+            },
+            {
+              "name": "void",
+              "type": "void"
+            },
+            {
+              "name": "udt",
+              "type": "udt"
+            },
+            {
+              "name": "bytes",
+              "type": "bytes"
+            },
+            {
+              "name": "address",
+              "type": "address"
+            },
+            {
+              "name": "map",
+              "type": "map"
+            },
+            {
+              "name": "i128",
+              "type": "i128"
+            },
+            {
+              "name": "option",
+              "type": "option"
+            }
+          ],
+          "raw": "cli:inspect:manager_remove_id_wallet_map"
+        }
+      ],
+      "scripts": {
+        "env": "env.sh",
+        "arguments": "arguments.sh",
+        "build": "scripts/build/build.sh",
+        "deploy": "scripts/deploy.sh",
+        "invokes": [
+          "scripts/invoke/add_voter.sh",
+          "scripts/invoke/cast_vote.sh",
+          "scripts/invoke/set_admin.sh",
+          "scripts/invoke/add_manager.sh",
+          "scripts/invoke/remove_voter.sh",
+          "scripts/invoke/add_validator.sh",
+          "scripts/invoke/apply_upgrade.sh",
+          "scripts/invoke/get_validators.sh",
+          "scripts/invoke/remove_manager.sh",
+          "scripts/invoke/cancel_proposal.sh",
+          "scripts/invoke/propose_upgrade.sh",
+          "scripts/invoke/remove_validator.sh",
+          "scripts/invoke/set_id_wallet_map.sh",
+          "scripts/invoke/get_wallet_by_userid.sh",
+          "scripts/invoke/remove_id_wallet_map.sh",
+          "scripts/invoke/manager_remove_id_wallet_map.sh"
+        ],
+        "exampleFlow": "scripts/flows/flow.example.sh"
+      }
+    }
+  ],
+  "workspaceManifest": {
+    "generatedAt": "2026-07-08T04:17:36.351Z",
+    "projectRoot": null,
+    "contracts": [
+      {
+        "contractName": "socketfi_identity_registry_optimized",
+        "dir": ".",
+        "manifest": "manifest.json"
+      }
+    ]
+  },
+  "filesPath": "/app/.storage/workflows/owners/sorobuild_flow_browser_9c3b1a12-fefa-433a-80a0-70f503414963/workflows/wf_1783484256154_a4b7ed5e"
+}
